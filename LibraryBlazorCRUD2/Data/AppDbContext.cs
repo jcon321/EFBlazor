@@ -1,7 +1,7 @@
 ﻿using LibraryBlazorCRUD2.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryBlazorCRUD.Data
+namespace LibraryBlazorCRUD2.Data
 {
     public class AppDbContext : DbContext
     {

@@ -1,4 +1,6 @@
+using LibraryBlazorCRUD2.Data;
 using LibraryBlazorCRUD2.Components;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryBlazorCRUD2
 {
@@ -11,6 +13,11 @@ namespace LibraryBlazorCRUD2
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            // Register dbcontext
+            var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "library.db");
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite($"Data Source={dbPath}"));
 
             var app = builder.Build();
 
