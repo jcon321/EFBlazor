@@ -15,9 +15,8 @@ namespace LibraryBlazorCRUD2
                 .AddInteractiveServerComponents();
 
             // Register dbcontext
-            var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "library.db");
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite($"Data Source={dbPath}"));
+                options.UseSqlite("Data Source=mydatabase.db"));
 
             var app = builder.Build();
 
