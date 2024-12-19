@@ -1,6 +1,7 @@
 using LibraryBlazorCRUD2.Data;
 using LibraryBlazorCRUD2.Components;
 using Microsoft.EntityFrameworkCore;
+using LibraryBlazorCRUD2.Services;
 
 namespace LibraryBlazorCRUD2
 {
@@ -17,6 +18,8 @@ namespace LibraryBlazorCRUD2
             // Register dbcontext
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite("Data Source=mydatabase.db"));
+            builder.Services.AddScoped<PatronService>();
+            builder.Services.AddScoped<BookService>();
 
             var app = builder.Build();
 
