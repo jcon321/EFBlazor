@@ -1,0 +1,77 @@
+﻿@page "/books"
+@rendermode InteractiveServer
+@using LibraryBlazorCRUD2.Models
+@using LibraryBlazorCRUD2.Services
+@inject BookService BookService
+@inject PatronService PatronService
+@inject NavigationManager NavigationManager
+
+<h3>Books</h3>
+
+<ul>
+    @foreach (var book in books)
+    {
+            <li>
+            @book.Title (Patron: @book.Patron?.Name)
+                <button @onclick="() => EditBook(book.Id)">Edit</button>
+                <button @onclick="() => DeleteBook(book.Id)">Delete</button>
+            </li>
+    }
+</ul>
+
+<EditForm Model="@newBook" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label>Title: </label>
+        <InputText @bind-Value="newBook.Title" />
+    </div>
+    <div>
+        <label>Patron: </label>
+        <InputSelect @bind-Value="newBook.PatronId">
+            <option value="">Select Patron</option>
+            @foreach (var patron in patrons)
+            {
+                    <option value="@patron.Id">@patron.Name</option>
+            }
+        </InputSelect>
+    </div>
+    <button type="submit">Save</button>
+</EditForm>
+
+@code {
+    private List<Book> books;
+    private List<Patron> patrons;
+    private Book newBook = new Book();
+
+    protected override async Task OnInitializedAsync()
+    {
+        books = await BookService.GetAllBooksAsync();
+        patrons = await PatronService.GetAllPatronsAsync();
+    }
+
+    private async Task EditBook(int id)
+    {
+        newBook = await BookService.GetBookByIdAsync(id);
+    }
+
+    private async Task DeleteBook(int id)
+    {
+        await BookService.DeleteBookAsync(id);
+        books = await BookService.GetAllBooksAsync();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (newBook.Id == 0)
+        {
+            await BookService.AddBookAsync(newBook);
+        }
+        else
+        {
+            await BookService.UpdateBookAsync(newBook);
+        }
+        books = await BookService.GetAllBooksAsync();
+        newBook = new Book();
+    }
+}

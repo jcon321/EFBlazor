@@ -1,0 +1,53 @@
+﻿@page "/patrons"
+@rendermode InteractiveServer
+@using LibraryBlazorCRUD2.Models
+@using LibraryBlazorCRUD2.Services
+@inject PatronService PatronService
+
+
+<h3>Patrons</h3>
+
+<div class="card mb-5 p-3">
+    <div class="form-group">
+        <label for="nameInput">Name</label>
+        <input type="text" class="form-control" id="nameInput" @bind="newPatron.Name" />
+    </div>
+    <div class="form-group">
+        <label for="birthdateInput">Birthdate</label>
+        <input type="date" class="form-control" id="birthdateInput" @bind="newPatron.Birthdate" />
+    </div>
+    <button class="btn btn-primary mt-3" @onclick="AddPatron">
+        Add Patron
+    </button>
+</div>
+
+<div class="card mb-5 p-3">
+    <ul class="list-group">
+        @foreach (var patron in patrons)
+        {
+            <li class="list-group-item">
+                @($"{patron.Name} -- {patron.Birthdate?.ToString("yyyy-MM-dd") ?? "N/A"}")
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    private List<Patron> patrons = new List<Patron>();
+    private Patron newPatron = new Patron();
+
+    protected override async Task OnInitializedAsync()
+    {
+        patrons = await PatronService.GetAllPatronsAsync();
+    }
+
+    private async Task AddPatron()
+    {
+        if (!string.IsNullOrEmpty(newPatron.Name))
+        {
+            await PatronService.AddPatronAsync(newPatron);
+            patrons = await PatronService.GetAllPatronsAsync();
+            newPatron = new Patron(); // reset values
+        }
+    }
+}
