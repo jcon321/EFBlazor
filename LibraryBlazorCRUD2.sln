@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryBlazorCRUD2", "LibraryBlazorCRUD2\LibraryBlazorCRUD2.csproj", "{2B0F6DD7-57CD-4836-8BA0-FD6CEFA6DAAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryBlazorCRUD2Tests", "LibraryBlazorCRUD2Tests\LibraryBlazorCRUD2Tests.csproj", "{6F4CA84C-E36A-4802-B268-4F5E63B13D36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2B0F6DD7-57CD-4836-8BA0-FD6CEFA6DAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B0F6DD7-57CD-4836-8BA0-FD6CEFA6DAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B0F6DD7-57CD-4836-8BA0-FD6CEFA6DAAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4CA84C-E36A-4802-B268-4F5E63B13D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4CA84C-E36A-4802-B268-4F5E63B13D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4CA84C-E36A-4802-B268-4F5E63B13D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4CA84C-E36A-4802-B268-4F5E63B13D36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
