@@ -1,12 +1,12 @@
 # LibraryBlazorCRUD2
 
 
-vs2022
-new project, "Blazor Web App"
-do not place proj and solution in same dir - so test proj can be added
-.net 8 lts
-no auth, configure https, rendermode=server per page/component, include sample pages, dont use top lvl statements, no aspire
-used vs to create git repo, added readme, added default .gitignore
+vs2022 
+new project, "Blazor Web App" 
+do not place proj and solution in same dir - so test proj can be added 
+.net 8 lts 
+no auth, configure https, rendermode=server per page/component, include sample pages, dont use top lvl statements, no aspire 
+used vs to create git repo, added readme, added default .gitignore 
 deleted sample project files
 added ef core with sqllite
 	dotnet add package Microsoft.EntityFrameworkCore.Sqlite
